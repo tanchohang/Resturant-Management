@@ -1,0 +1,40 @@
+{
+  "menu" : {
+    "category" : {
+      "bevreag" : {
+        "Alcoholic" : [ {
+          "item" : "beer",
+          "price" : 400
+        } ],
+        "cold-drinks" : [ {
+          "item" : "coke",
+          "price" : 40
+        } ],
+        "hot-drinks" : [ {
+          "item" : "coffee",
+          "price" : 50
+        }, {
+          "item" : "latte",
+          "price" : 80
+        } ]
+      },
+      "non-veg" : {
+        "buff" : [ {
+          "item" : "mo:mo",
+          "price" : 90
+        } ],
+        "chicken" : [ {
+          "item" : "mo:mo",
+          "price" : 100
+        } ]
+      },
+      "veg" : [ {
+        "item" : "veg-fried-rice",
+        "price" : 80
+      }, {
+        "item" : "veg mo:mo",
+        "price" : 75
+      } ]
+    }
+  }
+}

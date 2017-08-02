@@ -1,0 +1,29 @@
+ <div>
+   <form class="search_location">
+     <input type="search" [(ngModel)]="searched_location" name="searched_location"
+     placeholder="enter address"/>
+     <button type="submit" (click)="searchedLocation()">search</button>
+   </form>
+  <agm-map
+   [latitude]="lat" 
+   [longitude]="lng"
+   [zoom]="zoom"
+   [disableDefaultUI]=false
+   [zoomControl]="false"
+   (mapClick)="mapClicked($event)">
+    <agm-marker 
+    [latitude]="lat" 
+    [longitude]="lng" 
+    [visible]="visible"
+    [markerDraggable]="true" 
+    >
+  <agm-info-window>{{place}}</agm-info-window>
+  </agm-marker>  
+  </agm-map>
+  <button md-raised-button (click)="getCurrentLocation()">Get Your Location</button>
+  <div>
+
+  <span>Place:{{place}}</span><br>
+  </div>
+  
+</div> 

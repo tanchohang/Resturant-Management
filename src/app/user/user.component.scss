@@ -1,0 +1,12 @@
+.user_profile{
+    max-width: 400px;
+    margin: 0 auto;
+    form{
+        md-input-container{
+            display: block;
+        }
+        button{
+            margin-bottom: 20px;
+        }
+    }
+}

@@ -1,0 +1,42 @@
+<md-toolbar color="primary">
+  <div class="wrapper">
+    <div class="toolbar_title">
+      <button class="back_btn" md-button (click)="back_button()"><md-icon>arrow_back</md-icon></button>
+      <span>{{pageTitle}}</span>
+    </div>
+    <div class="toolbar_aside">
+
+      <button md-button routerLink="/cart"><md-icon>shopping_cart</md-icon></button>
+      <button md-button type="button" *ngIf="!loggedin" routerLink="/login">Login</button>
+      <button md-button type="button" *ngIf="!loggedin" routerLink="/signup">SignUp</button>
+
+      <button md-button *ngIf="loggedin" routerLink="dashboard">Dashboard</button>      
+      <button md-button *ngIf="loggedin" (click)="logout()">Logout</button>
+
+    </div>
+    <div  class="toolbar_aside_sm">
+     <button md-icon-button [mdMenuTriggerFor]="menu">
+      <md-icon>more_vert</md-icon>
+    </button> 
+    </div>
+    <md-menu #menu="mdMenu">
+      <button md-menu-item routerLink="/cart">
+        <md-icon>shopping_cart</md-icon>
+        <span>Your Order</span>
+      </button>
+      <button md-menu-item *ngIf="!loggedin" routerLink="/login">
+        <span>Login</span>
+      </button>
+      <button md-menu-item *ngIf="!loggedin" routerLink="/signup">
+        <span>SignUp</span>
+      </button>
+      <button md-button *ngIf="loggedin" routerLink="/dashboard">
+        <span>Dashboard</span>
+      </button>      
+      
+      <button md-menu-item *ngIf="loggedin" (click)="logout()">
+        <span>Logout</span>
+      </button>
+    </md-menu>
+  </div>
+</md-toolbar>

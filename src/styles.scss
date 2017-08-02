@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/* fallback */
+*{
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+html{   
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden; 
+   max-height: 100%;  
+
+}

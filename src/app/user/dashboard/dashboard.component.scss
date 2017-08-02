@@ -1,0 +1,13 @@
+.dashboard{
+    display: flex;
+    .profil_pic{
+        display: block;
+        background-color: gray;
+        min-height: 100px;
+        min-width: 100px;
+
+    }
+    .dashboard_menu{
+        background-color: goldenrod;
+    }
+}

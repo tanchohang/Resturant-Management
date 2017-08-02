@@ -1,0 +1,30 @@
+.login_content{
+    
+    form{
+        max-width: 400px;
+        width: 100%;
+        margin: 0 auto;
+        md-input-container{  
+            display: block; 
+            md-icon{
+                font-size: 20px;
+            }
+        }
+        button{
+            display: block;
+            margin-bottom: 20px;
+        }
+        button.facebook_login{
+            background-color: blue;
+        }
+        button.twitter_login{
+            background-color: skyblue;
+        }
+
+        button.google_login{
+            background-color:orangered;
+        }
+        
+
+    }
+}

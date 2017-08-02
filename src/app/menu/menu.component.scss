@@ -1,0 +1,30 @@
+.menu_content{
+    box-sizing: border-box;
+    width:100%;
+    margin: 0;
+    ul.category{       
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-auto-rows: 1fr;
+        grid-row-gap: 20px;
+        justify-content: center;
+        li{
+            display: inline-block;
+            text-align: center;
+            background-color:salmon;
+            :hover{
+                cursor: pointer;
+                color: white;
+            }
+            a{
+                font-size: 12px;
+                display: block;
+                text-decoration: none;
+                height: inherit;
+                line-height: 200px;
+            }
+
+        }
+    }
+}
+
