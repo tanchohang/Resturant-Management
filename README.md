@@ -1,6 +1,11 @@
 # ResturantManagement
 
+Check out [the App](https://resturant-management.firebaseapp.com)
+This app is built as an academic summer project.It deals with different aspects of Resturant Management as:Billing,Ordering,Reservation,Delivering,Datastorage and so on.. 
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.3.
+
 
 ## Development server
 
