@@ -2,6 +2,7 @@
    
     <form class="login" (submit)="login()">
         <md-input-container>
+            <span mdPrefix><md-icon>account_circle</md-icon></span>
             <input  type="email" [(ngModel)]="email" name="username" mdInput placeholder="email" [formControl]="passwordFormControl"/>
             <md-error *ngIf="usernameFormControl.hasError('required')"> 
                 email required
@@ -9,6 +10,7 @@
         </md-input-container>
         
         <md-input-container>
+            <span mdPrefix><md-icon>lock</md-icon></span>
             <input  type="password" [(ngModel)]="password" name="password"  mdInput placeholder="password" [formControl]="passwordFormControl"/>
             <md-error *ngIf="passwordFormControl.hasError('required')"> 
                 password required

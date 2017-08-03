@@ -7,11 +7,11 @@
     <div class="toolbar_aside">
 
       <button md-button routerLink="/cart"><md-icon>shopping_cart</md-icon></button>
-      <button md-button type="button" *ngIf="!loggedin" routerLink="/login">Login</button>
-      <button md-button type="button" *ngIf="!loggedin" routerLink="/signup">SignUp</button>
+      <button md-button type="button" *ngIf="!isLoggedin" routerLink="/login">Login</button>
+      <button md-button type="button" *ngIf="!isLoggedin" routerLink="/signup">SignUp</button>
 
-      <button md-button *ngIf="loggedin" routerLink="dashboard">Dashboard</button>      
-      <button md-button *ngIf="loggedin" (click)="logout()">Logout</button>
+      <button md-button *ngIf="isLoggedin" (click)="navigateDashboard()">Dashboard</button>      
+      <button md-button *ngIf="isLoggedin" (click)="logout()">Logout</button>
 
     </div>
     <div  class="toolbar_aside_sm">
@@ -24,17 +24,17 @@
         <md-icon>shopping_cart</md-icon>
         <span>Your Order</span>
       </button>
-      <button md-menu-item *ngIf="!loggedin" routerLink="/login">
+      <button md-menu-item *ngIf="!isLoggedin" routerLink="/login">
         <span>Login</span>
       </button>
-      <button md-menu-item *ngIf="!loggedin" routerLink="/signup">
+      <button md-menu-item *ngIf="!isLoggedin" routerLink="/signup">
         <span>SignUp</span>
       </button>
-      <button md-button *ngIf="loggedin" routerLink="/dashboard">
+      <button md-button *ngIf="isLoggedin" (click)="navigateDashboard()">
         <span>Dashboard</span>
       </button>      
       
-      <button md-menu-item *ngIf="loggedin" (click)="logout()">
+      <button md-menu-item *ngIf="isLoggedin" (click)="logout()">
         <span>Logout</span>
       </button>
     </md-menu>

@@ -1,45 +1,58 @@
 <div class="signup_content container">
-   
+
   <form class="signup" (submit)="signup()">
-      <md-input-container>
-        <input type="email" name="email" [(ngModel)]="email" mdInput placeholder="email" [formControl]="emailFormControl"  />
-        <md-error *ngIf="emailFormControl.hasError('pattern')">
-            Please enter a valid email address
-        </md-error>
-        <md-error *ngIf="emailFormControl.hasError('required')">
-             Email is <strong>required</strong>
-        </md-error>
-      </md-input-container>
 
-      <md-input-container>
-        <input type="password" [(ngModel)]="password" name="password" mdInput placeholder="password" [formControl]="passwordFormControl"/>
+    <md-input-container>
+      <input type="email" name="username" [(ngModel)]="username" mdInput placeholder="username" minlength="3" [formControl]="usernameFormControl" />
+      <md-error *ngIf="usernameFormControl.hasError('pattern')">
+        Please enter a valid username
+      </md-error>
+      <md-error *ngIf="usernameFormControl.hasError('required')">
+       username is <strong>required</strong>
+      </md-error>
+    </md-input-container>
 
-        <md-error  *ngIf="passwordFormControl.hasError('required')">
-             Password is <strong>required</strong>              
-        </md-error>
-        <md-error *ngIf="passwordFormControl.hasError('minLength')">
-              Password must be atleast 8 characters long
-        </md-error>
-      </md-input-container>
+    <md-input-container>
+      <input type="email" name="email" [(ngModel)]="email" mdInput placeholder="email" [formControl]="emailFormControl" />
+      <md-error *ngIf="emailFormControl.hasError('pattern')">
+        Please enter a valid email address
+      </md-error>
+      <md-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </md-error>
+    </md-input-container>
 
-       <md-input-container>
-          <input type="password" name="confirmPassword" mdInput placeholder="confirm password" [formControl]="confirmPasswordFormControl"/>
+    <md-input-container>
+      <input type="password" [(ngModel)]="password" name="password" mdInput placeholder="password" [formControl]="passwordFormControl"
+      />
 
-          <md-error  *ngIf="usernameFormControl.hasError('equals')">
-             Password donot <strong>match</strong>              
-        </md-error>
-      </md-input-container>
+      <md-error *ngIf="passwordFormControl.hasError('required')">
+        Password is <strong>required</strong>
+      </md-error>
+      <md-error *ngIf="passwordFormControl.hasError('minLength')">
+        Password must be atleast 8 characters long
+      </md-error>
+    </md-input-container>
 
-      <button type="submit" class="form-control" name="submit" value="signup" md-raised-button>Sign Up</button>
+    <md-input-container>
+      <input type="password" name="confirmPassword" mdInput placeholder="confirm password" [formControl]="confirmPasswordFormControl"
+      />
 
-      <span><a routerLink="/login">Already have an account?</a></span>
+      <md-error *ngIf="usernameFormControl.hasError('equals')">
+        Password donot <strong>match</strong>
+      </md-error>
+    </md-input-container>
 
-      <button  type="button" class="form-control" class="form-control facebook_login" md-raised-button>Login With Facebook</button>
-      <button  type="button" class="form-control" class="form-control twitter_login" md-raised-button>Login With Twitter</button>
+    <button type="submit" class="form-control" name="submit" value="signup" md-raised-button>Sign Up</button>
 
-      
-     
+    <span><a routerLink="/login">Already have an account?</a></span>
+
+    <button type="button" class="form-control" class="form-control facebook_login" md-raised-button>Login With Facebook</button>
+    <button type="button" class="form-control" class="form-control twitter_login" md-raised-button>Login With Twitter</button>
+
+
+
   </form>
-  
+
 
 </div>

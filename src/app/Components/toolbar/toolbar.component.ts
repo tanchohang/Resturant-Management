@@ -1,5 +1,4 @@
-import { AuthService } from '../../services/auth.service';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AuthService } from './../../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd, NavigationStart,RoutesRecognized,ActivatedRoute } from '@angular/router';
 import { Location,AsyncPipe } from '@angular/common';
@@ -11,27 +10,29 @@ import { Location,AsyncPipe } from '@angular/common';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
-  loggedin:boolean=false;
+  isLoggedin:boolean;
   pageTitle:string;
+  id:string;
 
   constructor(
     private location:Location,
     private router:Router,
-    private activatedRoute:ActivatedRoute,
     private authService:AuthService,
-    private auth:AngularFireAuth
-  ) {
-    
-  }
+    ) {
+      this.authService.getId().subscribe(res=>{
+        this.id=res;
+      })
+    }
 
   ngOnInit() {
     this.router.events.subscribe((data)=>{
     if(data instanceof RoutesRecognized)
       this.pageTitle = data.state.root.firstChild.data.title;
-  
-    this.loggedin=this.authService.getIsLoggedIn();
-    
-  })
+    })
+
+    this.authService.getLoggedIn().subscribe(isLoggedIn=>{
+      this.isLoggedin=isLoggedIn;
+    });
 
   }
 
@@ -41,7 +42,9 @@ export class ToolbarComponent implements OnInit {
 
   logout(){
     this.authService.logout();
-    this.router.navigate([''])
   }
 
+  navigateDashboard(){
+    this.router.navigate(["/user/"+this.id+"/dashboard"])
+  }
 }

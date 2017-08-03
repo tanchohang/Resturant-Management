@@ -1,7 +1,7 @@
-import { AuthService } from './../../services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormControl,Validators } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 
 
@@ -13,41 +13,43 @@ const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit {
 
-  username:string;
-  email:string;
-  password:string;
+  username: string;
+  email: string;
+  password: string;
 
 
   constructor(
-    private authService:AuthService,
-    private router:Router
-  ){}
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
 
-  usernameFormControl=new FormControl('',[
+  ngOnInit() {}
+
+  usernameFormControl = new FormControl('', [
     Validators.required,
     Validators.minLength(3)
 
-  ]);  
+  ]);
   emailFormControl = new FormControl('', [
       Validators.required,
       Validators.pattern(EMAIL_REGEX)
   ]);
-  
-  passwordFormControl=new FormControl('',[
+
+  passwordFormControl = new FormControl('', [
     Validators.required,
     Validators.minLength(8)
   ]);
 
-  confirmPasswordFormControl=new FormControl('',[
-    
-  ]);
-  
+  confirmPasswordFormControl = new FormControl('', [
 
-  signup(){
-    this.authService.signup(this.email,this.password);    
+  ]);
+
+
+  signup() {
+    this.authService.signupWithEmail(this.email, this.password);
   }
 
 }

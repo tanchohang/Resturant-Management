@@ -1,7 +1,42 @@
 <div>
-  <form>
-    <md-input-container>
-      <input mdInput type="text" name="item" placeholder="Food Item"/>
-    </md-input-container>
+  <form (submit)="save()">
+
+    <md-select  placeholder="Select A Menu"  name="menu" [(ngModel)]="menu">
+      <md-option *ngFor="let type of menuList" [value]="type">{{type}}</md-option>
+    </md-select>
+
+    
+      <md-input-container>
+        <input mdInput type="text" name="itemName" [(ngModel)]="itemName" placeholder="Item Name" [formControl]="itemNameFormContorl"/>
+        <md-error *ngIf="itemNameFormContorl.hasError('required')">
+          Item name is required
+        </md-error>
+      </md-input-container>
+
+      <md-input-container>
+        <input mdInput type="text" name="price" [(ngModel)]="price" placeholder="Price" [formControl]="priceFormControl" />
+        <md-error *ngIf="priceFormControl.hasError('required')">
+          Price is required
+        </md-error>
+      </md-input-container>
+
+      <md-select *ngIf="menu===menuList[1]" placeholder="Category" [(ngModel)]="category" name="category">
+        <md-option *ngFor="let item of drinksList" [value]="item">{{item}}</md-option>
+      </md-select>
+
+      <md-select *ngIf="menu===menuList[0]" placeholder="Category" [(ngModel)]="category" name="category">
+        <md-option *ngFor="let item of categoryList" [value]="item">{{item}}</md-option>
+      </md-select>
+      
+      <md-select  *ngIf="menu===menuList[0]&&category===categoryList[1]" placeholder="Type" name="type" [(ngModel)]="type">
+        <md-option value="Buff">Buff</md-option>
+        <md-option value="Chicken">Chicken</md-option>
+      </md-select>
+      
+      <button class="form-control" md-raised-button type="submit">Save</button>
+      <button class="form-control" md-raised-button type="button">cancle</button>
+
+    
+
   </form>
 </div>

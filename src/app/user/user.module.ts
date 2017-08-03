@@ -1,5 +1,7 @@
+import { AuthGuard } from './../guard/auth/auth.guard';
+import { AuthService } from './../services/auth/auth.service';
+import { MD_PLACEHOLDER_GLOBAL_OPTIONS } from '@angular/material';
 import { GoogleMapsModule } from './../google-maps/google-maps.module';
-import { AuthGuard } from '../guard/auth/auth.guard';
 import { GoogleMapsAPIWrapper } from '@agm/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -16,20 +18,20 @@ import { DeliveryComponent } from './delivery/delivery.component';
 import { MenuEntryCMSComponent } from './admin-view/menu-entry-cms/menu-entry-cms.component';
 
 
-const routes:Routes=[
-      {path:'user/:id',component:UserComponent,canActivate:[AuthGuard],data:{title:"User Profile"},
+const routes: Routes = [
+
+      {path: 'user/:id',canActivate:[AuthGuard], component: UserComponent, data: {title: 'User Profile'}},
+      {path: 'signup', component: SignupComponent, data: {title: 'Sign Up'}},
+      {path: 'login', component: LoginComponent, data: {title: 'Login'}},     
+
+      {path: 'user/:id/dashboard',canActivate:[AuthGuard],component: DashboardComponent, data: {title: 'Dashboard'},
       children:[
-        {path:'dashboard',component:DashboardComponent, data:{title:"Dashboard"}},
-        {path:'dashboard/delivery',component:DeliveryComponent,data:{title:"Delivery"}},
-        {path:'dashboard/reservations',component:DeliveryComponent,data:{title:"Reservations"}},      
-        {path:'dashboard/menucms',component:MenuEntryCMSComponent,data:{title:"Edit Menu Item"}},
-      
-      ]
-    
-    },
-      {path:'signup',component:SignupComponent,data:{title:"Sign Up"}},
-      {path:'login',component:LoginComponent,data:{title:"Login"}},
-      
+        {path: 'delivery', component: DeliveryComponent, data: {title: 'Delivery'}},
+        {path: 'reservations', component: DeliveryComponent, data: {title: 'Reservations'}},
+        {path: 'menucms', component: MenuEntryCMSComponent, data: {title: 'Edit Menu Item'}},
+      ]},             
+     
+
     ]
 
 @NgModule({
@@ -39,9 +41,9 @@ const routes:Routes=[
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    GoogleMapsModule           
+    GoogleMapsModule
   ],
-    
+
   declarations: [
     UserComponent,
     SignupComponent,
@@ -50,15 +52,20 @@ const routes:Routes=[
     DeliveryComponent,
     MenuEntryCMSComponent
   ],
-  exports:[
+  exports: [
     UserComponent,
     SignupComponent,
     LoginComponent,
     DashboardComponent,
     DeliveryComponent
-       
+
   ],
-  providers:[GoogleMapsAPIWrapper]
+  providers: [
+    GoogleMapsAPIWrapper,
+    AuthService,
+    {provide: MD_PLACEHOLDER_GLOBAL_OPTIONS, useValue: { float: 'never' }},
+
+  ]
 
 })
 export class UserModule { }
