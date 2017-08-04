@@ -77,6 +77,7 @@ const routes:Routes=[
   providers: [
     AngularFireAuth,
     AuthGuard,
+    
   ],
   bootstrap: [AppComponent],
   

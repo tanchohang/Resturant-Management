@@ -21,7 +21,7 @@ authUser: Observable<firebase.User>;
 signupWithEmail(email: string, password: string) {
   this.afAuth.auth.createUserWithEmailAndPassword(email, password)
   .then(res=>{
-    this.router.navigate(['/user/'+`${res.uid}`])
+    this.router.navigate([`/user/${res.uid}/dashboard`])
     console.log("User Registered",res);
   })
   .catch(err => {
@@ -32,13 +32,43 @@ signupWithEmail(email: string, password: string) {
 loginWithEmail(email:string,password:string){
   this.afAuth.auth.signInWithEmailAndPassword(email,password)
   .then(res=>{
-    this.router.navigate(['/user/'+`${res.uid}`]) 
+    this.router.navigate([`/user/${res.uid}/dashboard`]) 
     console.log("User Logged In",res);
   })
   .catch(err=>{
     console.log(err.message);
   })
 }
+
+
+loginWithGoogle(){
+  this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+  .then(res=>{
+    this.router.navigate([`/user/${res.uid}/dashboard`]) 
+    console.log('google logged in:',res.uid) ;  
+  });
+}
+
+loginWithFacebook(){
+  this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+  .then(res=>{
+    this.router.navigate([`/user/${res.uid}/dashboard`]) 
+    
+    console.log('facebook logged in:',res.uid) ;  
+    
+  })
+}
+
+loginWithTwitter(){
+  this.afAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider())
+  .then(res=>{
+    this.router.navigate([`/user/${res.uid}/dashboard`]) 
+    console.log('twitter logged in:',res.uid)    
+  });
+}
+
+
+ 
 
 logout(){
   this.afAuth.auth.signOut()

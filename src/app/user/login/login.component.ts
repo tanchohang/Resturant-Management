@@ -32,6 +32,18 @@ rememberme: boolean= false;
     this.authService.loginWithEmail(this.email, this.password);
   }
 
+  loginWithGoogle(){
+    this.authService.loginWithGoogle();
+  }
+
+  loginWithFacebook(){
+    this.authService.loginWithFacebook();
+  }
+
+  loginWithTwitter(){
+    this.authService.loginWithTwitter();
+  }
+
 
   
 
