@@ -1,3 +1,4 @@
+import { SettingsComponent } from './Components/settings/settings.component';
 import { BrowserModule} from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -42,9 +43,8 @@ import { NotificationComponent } from './notification/notification.component';
 const routes:Routes=[
       {path:'',pathMatch:"full",redirectTo:"/home"},
       {path:'home',component:HomeComponent,data:{title:"FoodLand Resturant"}},
-      {path:'menu',component:MenuComponent,data:{title:"Menu"}},
       {path:'notification',component:NotificationComponent,data:{title:"Notifications"}},      
-      {path:'settings',component:MenuComponent,data:{title:"Settings"}},
+      {path:'settings',component:SettingsComponent,data:{title:"Settings"}},
       {path:'**', component:NotfoundComponent, data:{title:"404 Error"}}
 
     ];

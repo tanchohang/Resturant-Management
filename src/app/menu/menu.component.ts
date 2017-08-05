@@ -1,6 +1,7 @@
-import { AngularFireDatabase,FirebaseListObservable } from 'angularfire2/database';
-import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
+import { Component, OnInit, HostListener} from '@angular/core';
+Router
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -8,18 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  menu:FirebaseListObservable<any[]>;
-  constructor(
-    private db:AngularFireDatabase,
-  ) { }
+  constructor(    
+  ) {
+    
+   }
 
   ngOnInit() {
-    this.menu=this.db.list('/menu/bevreag');
-    this.menu.subscribe(data=>{
-      console.log(data)
-    })
-    
   
   }
+ addClass(event:any,className:string){
+    let cartBtn=event.target
+    if(cartBtn.classList.contains('added')){
+      cartBtn.classList.remove('added');
+    }
+    else{
+      cartBtn.classList.add('added');
+    }
 
+ }
+  cart(event){
+    this.addClass(event,'added');
+    
+    
+  }
+  
 }

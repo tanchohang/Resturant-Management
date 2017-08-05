@@ -47,9 +47,15 @@
 
     <span><a routerLink="/login">Already have an account?</a></span>
 
-    <button type="button" class="form-control" class="form-control facebook_login" md-raised-button>Login With Facebook</button>
-    <button type="button" class="form-control" class="form-control twitter_login" md-raised-button>Login With Twitter</button>
+    
 
+      <button  type="button" class="form-control" class="form-control facebook_signup" (click)="signupWithFacebook()" md-raised-button>Join With Facebook</button>
+
+      <button  type="button" class="form-control" class="form-control twitter_signup" (click)="signupWithTwitter()" md-raised-button>Join With Twitter</button>
+
+      <button  type="button" class="form-control" class="form-control google_signup" (click)="signupWithGoogle()" md-raised-button>Join With Google</button>
+    
+    
 
 
   </form>

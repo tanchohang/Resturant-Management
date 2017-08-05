@@ -1,18 +1,26 @@
 <div class="dashboard">
+
+  <div class="user_profile">
+    <div class="user_info">
+      <div class="profile_pic"></div>
+      <div class="user_detail"><span>{{username}}</span></div>
+    </div>
+  </div>
+
   <div class="sidenav">
-    <ul>     
-        
-          <li><a md-button>Billing</a></li>
-          <li><a md-button>favrouite</a></li>
-          <li><a md-button>my-orders</a></li>
-          <li><a md-button routerLink="delivery">Delivery</a></li>
-          <li><a md-button routerLink="menucms">Menucms</a></li>
-       
+    <ul>
+      <li><a md-button>Billing</a></li>
+      <li><a md-button>Orders</a></li>
+      <li><a md-button routerLink="delivery">Delivery</a></li>
+      <!-- <li><a md-button>Favourite</a></li> -->
+      
+      <li><a md-button routerLink="menucms">Menucms</a></li>
+
     </ul>
-</div>      
-  
+  </div>
 
   <div class="content">
     <router-outlet></router-outlet>
   </div>
+
 </div>

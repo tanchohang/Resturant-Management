@@ -1,34 +1,54 @@
- <div class="menu_content">
+<div class="menu_content">
+  <div class="search_bar">
+    <md-card>
+      <div class="input-group row">
+        <input class="form-control" type="search" placeholder="Search" />
+        <span class="input-group-btn">
+            <button class="btn btn-default">GO!</button>
+        </span>
+      </div>
+    </md-card>
 
-    <ul class="category">
-         <li><a md-button class="bevrage" data-toggle="modal" data-target="#bevrage_modal"><span>BEVRAGE</span></a></li>
-        <li><a class="veg" data-toggle="modal" data-target="#veg_modal"><span>VEG</span></a></li>
-        <li><a class="non-veg" data-toggle="modal" data-target="#non-veg_modal"><span>NON-VEG</span></a></li> 
-    </ul>
+  </div>
+  <div class="menu_nav">
+    <md-card>
+      <div class="nav_list">
+        <div class="dropdown beverage_dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+           Beverage
+            <span class="caret"></span>
+        </button>
+          <ul class="dropdown-menu beverage_menu">
+            <li><a>Hot Drinks</a></li>
+            <li><a>Cold Drinks</a></li>
+            <li><a>Alcoholics</a></li>
+          </ul>
+        </div>
+        <div class="dropdown food_dropdown">
+          <button class="btn btn-default btn-group-sm dropdown-toggle" type="button"  data-toggle="dropdown">
+            Food
+            <span class="caret"></span>
+        </button>
+          <ul class="dropdown-menu food_menu" >
+            <li><a>Veg</a></li>
+            <li><a>Non-veg</a></li>
+          </ul>
+        </div>
+      </div>
+    </md-card>
+  </div>
+  <div class="menu-list">
+    <md-card *ngFor="let item of items|async">
+      <ul>
+        <li>
 
-    
-            <div id="bevrage_modal" class="modal fade" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" md-mini-fab class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Bevrage</h4>
-                    </div>
-                    <div class="modal-body">
-                        <md-card>
-                            
-                        </md-card>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
-       
-    
-     
- </div>
-
-
+          <span class="menu_name"> {{item.item}}</span>
+          <span class="price">Rs.{{item.price}}</span>
+          <button md-raised-button (click)="cart($event)">
+            <md-icon>add_shopping_cart</md-icon>
+          </button>
+        </li>
+      </ul>
+    </md-card>
+  </div>
+</div>

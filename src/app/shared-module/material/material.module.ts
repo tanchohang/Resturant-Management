@@ -10,7 +10,9 @@ import {
         MdCardModule, 
         MdMenuModule, 
         MdSelectModule,
-        MdSidenavModule 
+        MdSidenavModule, 
+        MdAutocompleteModule,
+        MdButtonToggleModule
       } from '@angular/material';
 
 
@@ -24,7 +26,9 @@ import {
     MdInputModule,
     MdMenuModule,
     MdSelectModule,
-    MdSidenavModule
+    MdSidenavModule,
+    MdAutocompleteModule,
+    MdButtonToggleModule
     
   ],
   exports:[

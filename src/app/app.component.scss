@@ -4,12 +4,12 @@
 .appWrapper{
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 3fr 1fr;
-    grid-gap: 10px;
+    div{
+        height:fit-content;
+    }
     
 
-    app-toolbar{
+    div.app-toolbar{
         position: fixed;
         top: 0;
         width: 100%;
@@ -17,9 +17,14 @@
         height: 56px;
         z-index: 100;
     }
-    router-outlet{
+    div.router-outlet{
+        position: absolute;
+        top:64px;
+        min-width: 100%;
+        margin-bottom: 50px;
     }
-    app-navbar{
+
+    div.app-navbar{
         position: fixed;
         bottom: 0;
         width: 100%;

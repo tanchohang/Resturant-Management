@@ -7,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(){}
 
+  username:string="Tanchohang Limbu";
   ngOnInit() {
   console.log("Dashboard")
+
+ 
+
   }
 
 }

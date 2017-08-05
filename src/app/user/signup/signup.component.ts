@@ -52,4 +52,16 @@ export class SignupComponent implements OnInit {
     this.authService.signupWithEmail(this.email, this.password);
   }
 
+  signupWithGoogle(){
+    this.authService.loginWithGoogle();
+  }
+
+  signupWithFacebook(){
+    this.authService.loginWithFacebook();
+  }
+
+  signupWithTwitter(){
+    this.authService.loginWithTwitter();
+  }
+
 }

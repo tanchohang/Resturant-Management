@@ -1,9 +1,20 @@
-form{
-    max-width: 400px;
-    width: 100%;
-    margin: 0 auto;
-    
-    md-input-container{
-        display: block;
-    }
+form {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  md-input-container {
+    display: block;
+  }
+  button {
+    margin-bottom: 10px;
+  }
+  .facebook_signup {
+    background-color: blue;
+  }
+  .twitter_signup {
+    background-color: skyblue;
+  }
+  .google_signup {
+    background-color: orangered;
+  }
 }
