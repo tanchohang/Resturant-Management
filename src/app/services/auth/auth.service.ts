@@ -1,3 +1,4 @@
+import { FirebasedbService } from './../db/firebasedb.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -10,22 +11,40 @@ export class AuthService {
 
 
 authUser: Observable<firebase.User>;
-
   constructor(
     private router:Router,
-    private afAuth:AngularFireAuth
+    private afAuth:AngularFireAuth,
+    private fbdbService:FirebasedbService
   ) {
     this.authUser=afAuth.authState;
+    
     }
 
-signupWithEmail(email: string, password: string) {
+signupWithEmail(username:string,email: string, password: string) {
   this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-  .then(res=>{
-    this.router.navigate([`/user/${res.uid}/dashboard`])
-    console.log("User Registered",res);
+  .then(()=>{
+    this.authUser.subscribe(user=>{
+      console.log(user); 
+      if(user){   
+          user.updateProfile({
+            displayName: username,
+            photoURL: ""
+          }).then((res)=> {
+            console.log("updated profile",user)
+            this.fbdbService.saveUserData(user.uid,user.displayName,user.email)            
+          }).catch((error) =>{
+            console.error(error.message);
+          });
+      }
+        
+    })
+      
+     
+        
+   
   })
   .catch(err => {
-    console.log(err.message);
+    console.log(err.message);      
   })
 }
 
@@ -33,6 +52,7 @@ loginWithEmail(email:string,password:string){
   this.afAuth.auth.signInWithEmailAndPassword(email,password)
   .then(res=>{
     this.router.navigate([`/user/${res.uid}/dashboard`]) 
+    
     console.log("User Logged In",res);
   })
   .catch(err=>{

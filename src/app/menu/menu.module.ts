@@ -1,3 +1,4 @@
+import { FirebasedbService } from './../services/db/firebasedb.service';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from './../shared-module/material/material.module';
 import { MenuComponent } from './menu.component';
@@ -19,6 +20,7 @@ const routes:Routes=[
     MaterialModule
   ],
   declarations: [MenuComponent],
-  exports:[MenuComponent]
+  exports:[MenuComponent],
+  providers:[FirebasedbService]
 })
 export class MenuModule {}

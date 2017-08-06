@@ -1,3 +1,4 @@
+import { FirebasedbService } from './../../../services/db/firebasedb.service';
 import { FormControl, Validator, Validators } from '@angular/forms';
 import { Component,OnInit } from '@angular/core';
 @Component({
@@ -11,15 +12,19 @@ selectedCategory:string;
 
 menuList:string[]=["food-menu","drinks-menu"];
 categoryList:string[]=["veg","non-veg"];
-drinksList:string[]=["cold-drinks","hot-drinks","har  d-drinks"];
+drinksList:string[]=["cold-drinks","hot-drinks","hard-drinks"];
 
 menu:string
 itemName:string;
 price:string;
 category:string;
-type:string;
+subCategory:string;
 
-  constructor() { }
+  constructor(
+    private firebasedbService:FirebasedbService
+  ) {
+    
+   }
 
   itemNameFormContorl=new FormControl('',[
     Validators.required,
@@ -37,6 +42,9 @@ type:string;
   }
 
   save(){
+    console.log(this.menu,this.itemName,this.price,this.category,this.subCategory);
+    this.firebasedbService.setMenu(this.menu,this.itemName,this.price,this.category,this.subCategory);
+        
   }
 
   cancel(){}

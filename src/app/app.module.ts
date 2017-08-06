@@ -1,4 +1,3 @@
-import { SettingsComponent } from './Components/settings/settings.component';
 import { BrowserModule} from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -37,6 +36,8 @@ import { ToolbarComponent } from './Components/toolbar/toolbar.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { NotfoundComponent } from './Components/notfound/notfound.component';
 import { NotificationComponent } from './notification/notification.component';
+import { SettingsComponent } from './Components/settings/settings.component';
+
 
 
 
@@ -56,7 +57,8 @@ const routes:Routes=[
     ToolbarComponent,
     NavbarComponent,
     HomeComponent,
-    NotfoundComponent    
+    NotfoundComponent   ,
+    SettingsComponent 
     
   ],
   imports: [

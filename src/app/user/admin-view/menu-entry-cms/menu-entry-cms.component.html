@@ -13,14 +13,7 @@
         </md-error>
       </md-input-container>
 
-      <md-input-container>
-        <input mdInput type="text" name="price" [(ngModel)]="price" placeholder="Price" [formControl]="priceFormControl" />
-        <md-error *ngIf="priceFormControl.hasError('required')">
-          Price is required
-        </md-error>
-      </md-input-container>
-
-      <md-select *ngIf="menu===menuList[1]" placeholder="Category" [(ngModel)]="category" name="category">
+       <md-select *ngIf="menu===menuList[1]" placeholder="Category" [(ngModel)]="category" name="category">
         <md-option *ngFor="let item of drinksList" [value]="item">{{item}}</md-option>
       </md-select>
 
@@ -28,13 +21,20 @@
         <md-option *ngFor="let item of categoryList" [value]="item">{{item}}</md-option>
       </md-select>
       
-      <md-select  *ngIf="menu===menuList[0]&&category===categoryList[1]" placeholder="Type" name="type" [(ngModel)]="type">
+      <md-select  *ngIf="menu===menuList[0]&&category===categoryList[1]" placeholder="Sub Category" name="subCategory" [(ngModel)]="subCategory">
         <md-option value="Buff">Buff</md-option>
         <md-option value="Chicken">Chicken</md-option>
       </md-select>
-      
+
+      <md-input-container>
+        <input mdInput type="text" name="price" [(ngModel)]="price" placeholder="Price" [formControl]="priceFormControl" />
+        <md-error *ngIf="priceFormControl.hasError('required')">
+          Price is required
+        </md-error>
+      </md-input-container>
+
       <button class="form-control" md-raised-button type="submit">Save</button>
-      <button class="form-control" md-raised-button type="button">cancle</button>
+      <button class="form-control" md-raised-button type="reset">cancle</button>
 
     
 

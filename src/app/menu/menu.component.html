@@ -13,6 +13,8 @@
   <div class="menu_nav">
     <md-card>
       <div class="nav_list">
+        <div class="title"><span>Filter:</span>
+</div>
         <div class="dropdown beverage_dropdown">
           <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
            Beverage
@@ -38,10 +40,9 @@
     </md-card>
   </div>
   <div class="menu-list">
-    <md-card *ngFor="let item of items|async">
+    <md-card *ngFor="let item of menuItems|async">
       <ul>
         <li>
-
           <span class="menu_name"> {{item.item}}</span>
           <span class="price">Rs.{{item.price}}</span>
           <button md-raised-button (click)="cart($event)">

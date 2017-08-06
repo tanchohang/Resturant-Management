@@ -1,3 +1,6 @@
+import { Observable } from 'rxjs/Observable';
+import { element } from 'protractor';
+import { FirebasedbService } from './../services/db/firebasedb.service';
 import { Router } from '@angular/router';
 import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
 import { Component, OnInit, HostListener} from '@angular/core';
@@ -9,13 +12,15 @@ Router
 })
 export class MenuComponent implements OnInit {
 
-  constructor(    
-  ) {
-    
-   }
+  menuItems:Observable<any>;
+  
+  constructor(
+    private firebasedbService:FirebasedbService   
+  ) {}
 
   ngOnInit() {
-  
+    this.menuItems=this.firebasedbService.getMenu();
+    
   }
  addClass(event:any,className:string){
     let cartBtn=event.target
@@ -32,5 +37,16 @@ export class MenuComponent implements OnInit {
     
     
   }
+  getHotDrinks(){
+    this.firebasedbService.getMenu()
+    .subscribe(res=>{
+     
+      
+    }) 
+    
+  }
+
+  
+
   
 }

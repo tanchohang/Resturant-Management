@@ -1,3 +1,4 @@
+import { FirebasedbService } from './../../services/db/firebasedb.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -22,6 +23,7 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private firebasedbService:FirebasedbService,
     private router: Router
   ) {}
 
@@ -44,12 +46,12 @@ export class SignupComponent implements OnInit {
   ]);
 
   confirmPasswordFormControl = new FormControl('', [
-
+    
   ]);
 
 
   signup() {
-    this.authService.signupWithEmail(this.email, this.password);
+    this.authService.signupWithEmail(this.username,this.email, this.password);    
   }
 
   signupWithGoogle(){
