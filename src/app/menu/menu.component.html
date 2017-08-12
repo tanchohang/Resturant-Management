@@ -14,7 +14,7 @@
     <md-card>
       <div class="nav_list">
         <div class="title"><span>Filter:</span>
-</div>
+        </div>
         <div class="dropdown beverage_dropdown">
           <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
            Beverage
@@ -27,11 +27,11 @@
           </ul>
         </div>
         <div class="dropdown food_dropdown">
-          <button class="btn btn-default btn-group-sm dropdown-toggle" type="button"  data-toggle="dropdown">
+          <button class="btn btn-default btn-group-sm dropdown-toggle" type="button" data-toggle="dropdown">
             Food
             <span class="caret"></span>
         </button>
-          <ul class="dropdown-menu food_menu" >
+          <ul class="dropdown-menu food_menu">
             <li><a>Veg</a></li>
             <li><a>Non-veg</a></li>
           </ul>
@@ -40,14 +40,16 @@
     </md-card>
   </div>
   <div class="menu-list">
+    <app-spinner *ngIf="showSpinner"></app-spinner>
     <md-card *ngFor="let item of menuItems|async">
       <ul>
         <li>
           <span class="menu_name"> {{item.item}}</span>
           <span class="price">Rs.{{item.price}}</span>
-          <button md-raised-button (click)="cart($event)">
-            <md-icon>add_shopping_cart</md-icon>
-          </button>
+          <label>
+            <input type="checkbox" (change)="cartEntry($event,item)"/>
+          <a type="button" class="toggle" md-raised-button ><md-icon>add_shopping_cart</md-icon></a>
+          </label>
         </li>
       </ul>
     </md-card>

@@ -42,7 +42,6 @@ subCategory:string;
   }
 
   save(){
-    console.log(this.menu,this.itemName,this.price,this.category,this.subCategory);
     this.firebasedbService.setMenu(this.menu,this.itemName,this.price,this.category,this.subCategory);
         
   }

@@ -57,8 +57,8 @@ const routes:Routes=[
     ToolbarComponent,
     NavbarComponent,
     HomeComponent,
-    NotfoundComponent   ,
-    SettingsComponent 
+    NotfoundComponent,
+    SettingsComponent,
     
   ],
   imports: [
@@ -74,7 +74,7 @@ const routes:Routes=[
     HttpModule,
     MaterialModule,
     NotificationModule,
-    MenuModule
+    MenuModule,
   ],
   providers: [
     AngularFireAuth,

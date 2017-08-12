@@ -1,0 +1,44 @@
+.cart_wrapper{
+  display: grid;
+  grid-template-rows: 3fr 1fr 1fr;
+  
+  h3{
+    color:  #3f51b5;   
+  }
+.cart_list {
+    margin-top: 20px;
+    flex: 2;
+    md-card {
+      padding: 0 10px;
+      margin-bottom: 2px;
+      ul {
+        list-style: none;
+        li {
+          height: 100%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          .menu_name {
+            min-width: 30px;
+            max-width: 50px;
+          }
+          button{
+            display:inlne;
+            cursor: pointer;
+            color: red;
+              
+          }
+          
+          }
+        }
+      }
+    }
+  .total_cost{
+
+  }
+  .button_group{
+    height:50px;
+  }
+
+}

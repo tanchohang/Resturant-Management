@@ -1,7 +1,6 @@
 .menu_content {
   box-sizing: border-box;
   width: 70%;
-
   overflow-x: hidden;
   margin: 0 auto;
   display: flex;
@@ -22,21 +21,18 @@
       .nav_list {
         display: flex;
         align-items: center;
-        .title{
+        .title {
           padding-right: 3px;
         }
         .beverage_dropdown {
           padding-right: 5px;
         }
         .food_dropdown {
-          .food_menu{
-            li{
-              a{
-              }
+          .food_menu {
+            li {
+              a {}
             }
-            
           }
-          
         }
       }
     }
@@ -59,13 +55,24 @@
             min-width: 30px;
             max-width: 50px;
           }
+          label{
+            input{
+              display: none;
+             
+            }
+            button{
+            display:inlne;
+            cursor: pointer;
+            }
+            input:checked + .toggle{
+              color:red;
+            }
           
+          }
+          
+          }
         }
       }
     }
-  }
+   }
 
-  .added {
-            color: red;
-          }
-}

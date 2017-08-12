@@ -1,6 +1,8 @@
+import { AuthService } from './../services/auth/auth.service';
+import { FirebasedbService } from './../services/db/firebasedb.service';
+import { CartService } from './../services/cart/cart.service';
 import { Observable } from 'rxjs/Observable';
 import { element } from 'protractor';
-import { FirebasedbService } from './../services/db/firebasedb.service';
 import { Router } from '@angular/router';
 import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
 import { Component, OnInit, HostListener} from '@angular/core';
@@ -13,37 +15,45 @@ Router
 export class MenuComponent implements OnInit {
 
   menuItems:Observable<any>;
+  showSpinner:boolean=true;
   
   constructor(
-    private firebasedbService:FirebasedbService   
+    private cartService:CartService ,
+    private fbdbService:FirebasedbService,
+    private authService:AuthService
   ) {}
 
   ngOnInit() {
-    this.menuItems=this.firebasedbService.getMenu();
-    
+    this.menuItems=this.fbdbService.getMenu();
+    this.menuItems.subscribe(()=>this.showSpinner=false);
+      
   }
- addClass(event:any,className:string){
-    let cartBtn=event.target
-    if(cartBtn.classList.contains('added')){
-      cartBtn.classList.remove('added');
-    }
-    else{
-      cartBtn.classList.add('added');
-    }
-
- }
-  cart(event){
-    this.addClass(event,'added');
-    
-    
-  }
+ 
   getHotDrinks(){
-    this.firebasedbService.getMenu()
+    this.fbdbService.getMenu()
     .subscribe(res=>{
      
       
     }) 
     
+  }
+ cartEntry(e,item){
+  this.authService.authUser.subscribe(res=>{
+    if(res ){
+      if(e.target.checked){
+        this.cartService.addToCart(res.uid,item);
+      }
+      else{
+        this.cartService.removeFromCart(item);
+      }
+    }
+
+else{
+  console.log("Using offline cart");
+}
+  })
+
+   
   }
 
   

@@ -17,7 +17,6 @@ authUser: Observable<firebase.User>;
     private fbdbService:FirebasedbService
   ) {
     this.authUser=afAuth.authState;
-    
     }
 
 signupWithEmail(username:string,email: string, password: string) {
@@ -30,7 +29,7 @@ signupWithEmail(username:string,email: string, password: string) {
             displayName: username,
             photoURL: ""
           }).then((res)=> {
-            console.log("updated profile",user)
+            console.log("updated profile",username)
             this.fbdbService.saveUserData(user.uid,user.displayName,user.email)            
           }).catch((error) =>{
             console.error(error.message);
@@ -65,7 +64,8 @@ loginWithGoogle(){
   this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
   .then(res=>{
     this.router.navigate([`/user/${res.uid}/dashboard`]) 
-    console.log('google logged in:',res.uid) ;  
+    console.log('google logged in as:',res.user.displayName) ;  
+    this.fbdbService.saveUserData(res.user.uid,res.user.displayName,res.user.email);
   });
 }
 
@@ -74,7 +74,9 @@ loginWithFacebook(){
   .then(res=>{
     this.router.navigate([`/user/${res.uid}/dashboard`]) 
     
-    console.log('facebook logged in:',res.uid) ;  
+    console.log('facebook logged in as:',res.user.displayName) ; 
+    this.fbdbService.saveUserData(res.user.uid,res.user.displayName,res.user.email);
+     
     
   })
 }

@@ -1,3 +1,31 @@
-<p>
-  cart works!
-</p>
+<div class="cart_wrapper"> 
+<div class="cart_list">
+      <app-spinner *ngIf="showSpinner"></app-spinner>
+
+  <h3>Tabel no:{{tblNo}}</h3>
+    <md-card *ngFor="let item of cartItems|async">
+      <ul>
+        <li>
+          <span class="menu_name"> {{item.item}}</span>
+           <span class="price">Rs.{{item.price}}</span> 
+         
+          <button md-raised-button (click)="removeFromCart(item)"><md-icon>delete</md-icon></button>
+
+        </li>
+      </ul>
+    </md-card>
+    
+  </div>
+  <div class="total_cost">
+    <md-card>
+      <span>Total Cost:{{totalCost}}</span>
+    </md-card>
+  </div>
+  <div class="button_group">
+    <md-card>
+      <button md-raised-button (click)="order()">Order Now</button>
+      <button md-raised-button (click)="delivery()">Delivery</button>
+      <button md-raised-button (click)="takeaway()">Take Away</button>
+    </md-card>
+  </div>
+</div>

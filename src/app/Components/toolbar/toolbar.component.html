@@ -30,7 +30,7 @@
       <button md-menu-item *ngIf="!isLoggedin" routerLink="/signup">
         <span>SignUp</span>
       </button>
-      <button md-button *ngIf="isLoggedin" (click)="navigateDashboard()">
+      <button md-menu-item *ngIf="isLoggedin" (click)="navigateDashboard()">
         <span>Dashboard</span>
       </button>      
       

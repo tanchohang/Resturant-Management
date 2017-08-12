@@ -1,4 +1,7 @@
-import { FirebasedbService } from './../services/db/firebasedb.service';
+import { SpinnerComponent } from './../ui/spinner/spinner.component';
+import { UiModule } from './../ui/ui.module';
+import { CartService } from './../services/cart/cart.service';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from './../shared-module/material/material.module';
 import { MenuComponent } from './menu.component';
@@ -17,10 +20,12 @@ const routes:Routes=[
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    UiModule
   ],
   declarations: [MenuComponent],
   exports:[MenuComponent],
-  providers:[FirebasedbService]
+  providers:[CartService]
 })
 export class MenuModule {}

@@ -1,3 +1,5 @@
+import { CartComponent } from './../billing/cart/cart.component';
+import { ReservationComponent } from './reservation/reservation.component';
 import { FirebasedbService } from './../services/db/firebasedb.service';
 import { BillComponent } from './../billing/bill/bill.component';
 import { AuthGuard } from './../guard/auth/auth.guard';
@@ -24,13 +26,14 @@ const routes: Routes = [
 
       {path: 'user/:id',canActivate:[AuthGuard], component: UserComponent, data: {title: 'User Profile'}},
       {path: 'signup', component: SignupComponent, data: {title: 'Sign Up'}},
-      {path: 'login', component: LoginComponent, data: {title: 'Login'}},     
+      {path: 'login', component: LoginComponent, data: {title: 'Login'}},
 
       {path: 'user/:id/dashboard',canActivate:[AuthGuard],component: DashboardComponent, data: {title: 'Dashboard'},
       children:[
         {path: 'billing', component: BillComponent, data: {title: 'Bill'}},
         {path: 'delivery', component: DeliveryComponent, data: {title: 'Delivery'}},
-        {path: 'reservations', component: DeliveryComponent, data: {title: 'Reservations'}},
+        {path: 'cart', component: CartComponent, data: {title: 'Cart'}},
+        {path: 'reservations', component:ReservationComponent, data: {title: 'Reservations'}},
         {path: 'menucms', component: MenuEntryCMSComponent, data: {title: 'Edit Menu Item'}},
       ]},             
      
@@ -53,7 +56,8 @@ const routes: Routes = [
     LoginComponent,
     DashboardComponent,
     DeliveryComponent,
-    MenuEntryCMSComponent
+    MenuEntryCMSComponent,
+    ReservationComponent
   ],
   exports: [
     UserComponent,
