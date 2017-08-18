@@ -1,15 +1,18 @@
 import { AuthService } from './../../services/auth/auth.service';
 import {Router} from '@angular/router';
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { CanActivate,CanDeactivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateChild } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-@Injectable()
-export class AuthGuard implements CanActivate {
 
-  
-  constructor(
+export interface CanComponentDeactivate {
+  canDeactivate: () => Observable<boolean> | Promise<boolean> | boolean;
+}
+
+@Injectable()
+export class AuthGuard implements CanActivate,CanActivateChild,CanDeactivate<CanComponentDeactivate> {
+   constructor(
     private authService:AuthService,
     private router:Router
     ){}
@@ -26,7 +29,7 @@ export class AuthGuard implements CanActivate {
     //     return true;
     //   }
     // })
-
+      console.log("can activate route")
     return this.authService.getLoggedIn().map(isLoggedin=>{
       if(isLoggedin)
         return true;
@@ -37,4 +40,22 @@ export class AuthGuard implements CanActivate {
       })
     
   }
+
+  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
+    console.log("can avtivate child route")
+    return this.authService.getLoggedIn().map(isLoggedin=>{
+      if(isLoggedin)
+        return true;
+      else{
+        this.router.navigate(['/login']);
+        return false;
+      }
+      })
+  }
+
+  canDeactivate(component: CanComponentDeactivate, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot, nextState?: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
+    return component.canDeactivate ? component.canDeactivate() : true
+
+  }
+  
 }

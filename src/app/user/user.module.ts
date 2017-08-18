@@ -20,24 +20,24 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DeliveryComponent } from './delivery/delivery.component';
 import { MenuEntryCMSComponent } from './admin-view/menu-entry-cms/menu-entry-cms.component';
+import { OrderComponent } from './order/order.component';
 
 
 const routes: Routes = [
 
-      {path: 'user/:id',canActivate:[AuthGuard], component: UserComponent, data: {title: 'User Profile'}},
       {path: 'signup', component: SignupComponent, data: {title: 'Sign Up'}},
       {path: 'login', component: LoginComponent, data: {title: 'Login'}},
 
-      {path: 'user/:id/dashboard',canActivate:[AuthGuard],component: DashboardComponent, data: {title: 'Dashboard'},
+      {path: 'user/:id',canActivateChild:[AuthGuard], component:DashboardComponent, data: {title: 'User Profile'},
       children:[
-        {path: 'billing', component: BillComponent, data: {title: 'Bill'}},
-        {path: 'delivery', component: DeliveryComponent, data: {title: 'Delivery'}},
-        {path: 'cart', component: CartComponent, data: {title: 'Cart'}},
-        {path: 'reservations', component:ReservationComponent, data: {title: 'Reservations'}},
-        {path: 'menucms', component: MenuEntryCMSComponent, data: {title: 'Edit Menu Item'}},
-      ]},             
-     
-
+          {path:'',component:UserComponent,data: {title: 'User Profile'}},
+          {path: 'billing', component: BillComponent, data: {title: 'Bill'}},
+          {path: 'delivery', component: DeliveryComponent, data: {title: 'Delivery'}},
+          {path: 'order', component: OrderComponent, data: {title: 'Your Orders'}},
+          {path: 'reservations', component:ReservationComponent, data: {title: 'Reservations'}},
+          {path: 'menucms', component: MenuEntryCMSComponent, data: {title: 'Edit Menu Item'}},
+                    
+      ]}
     ]
 
 @NgModule({
@@ -57,7 +57,8 @@ const routes: Routes = [
     DashboardComponent,
     DeliveryComponent,
     MenuEntryCMSComponent,
-    ReservationComponent
+    ReservationComponent,
+    OrderComponent
   ],
   exports: [
     UserComponent,

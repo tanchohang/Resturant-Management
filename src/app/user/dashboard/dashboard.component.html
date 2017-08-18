@@ -1,17 +1,19 @@
 <div class="dashboard">
 
   <div class="user_profile">
+      <a class="link" routerLink="user">
     <div class="user_info">
-      <div class="profile_pic"></div>
+      <div class="profile_pic" ></div>
       <div class="user_detail"><span>{{username}}</span></div>
     </div>
+      </a>
   </div>
 
   <div class="sidenav">
     <ul>
       <li><a md-button routerLink="billing">Billing</a></li>
-      <li><a md-button routerLink="cart">Orders</a></li>
-      <li><a md-button routerLink="delivery">Delivery</a></li>
+      <li><a md-button routerLink="order">Orders</a></li>
+      <!-- <li><a md-button routerLink="delivery">Delivery</a></li> -->
        <li><a md-button routerLink="reservations">Reservation</a></li> 
       <li><a md-button routerLink="menucms">Menucms</a></li>
 

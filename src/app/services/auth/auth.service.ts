@@ -50,7 +50,7 @@ signupWithEmail(username:string,email: string, password: string) {
 loginWithEmail(email:string,password:string){
   this.afAuth.auth.signInWithEmailAndPassword(email,password)
   .then(res=>{
-    this.router.navigate([`/user/${res.uid}/dashboard`]) 
+    this.router.navigate([`/user/${res.uid}`]) 
     
     console.log("User Logged In",res);
   })
@@ -63,7 +63,7 @@ loginWithEmail(email:string,password:string){
 loginWithGoogle(){
   this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
   .then(res=>{
-    this.router.navigate([`/user/${res.uid}/dashboard`]) 
+    this.router.navigate([`/user/${res.uid}`]) 
     console.log('google logged in as:',res.user.displayName) ;  
     this.fbdbService.saveUserData(res.user.uid,res.user.displayName,res.user.email);
   });
@@ -72,7 +72,7 @@ loginWithGoogle(){
 loginWithFacebook(){
   this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
   .then(res=>{
-    this.router.navigate([`/user/${res.uid}/dashboard`]) 
+    this.router.navigate([`/user/${res.uid}`]) 
     
     console.log('facebook logged in as:',res.user.displayName) ; 
     this.fbdbService.saveUserData(res.user.uid,res.user.displayName,res.user.email);
@@ -84,7 +84,7 @@ loginWithFacebook(){
 loginWithTwitter(){
   this.afAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider())
   .then(res=>{
-    this.router.navigate([`/user/${res.uid}/dashboard`]) 
+    this.router.navigate([`/user/${res.uid}`]) 
     console.log('twitter logged in:',res.uid)    
   });
 }

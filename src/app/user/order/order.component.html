@@ -1,0 +1,26 @@
+<ul>
+  <div>
+    <h3>Table Order</h3>
+    <li *ngFor="let order of tableOrders|async">
+      <span>{{order.item}}</span>
+      <span>{{order.price}}</span>
+      <span>order status:progressbar</span>
+    </li>
+  </div>
+  <div>
+    <h3>Delivery Order</h3>
+    <li *ngFor="let order of deliveryOrders|async">
+      <span>{{order.item}}</span>
+      <span>{{order.price}}</span>
+      <span>order status:progressbar</span>
+    </li>
+  </div>
+    <div>
+      <h3>Take Away Order</h3>
+      <li *ngFor="let order of takeawayOrder|async">
+          <span>{{order.item}}</span>
+          <span>{{order.price}}</span>
+          <span>order status:progressbar</span>
+      </li>
+    </div>
+</ul>

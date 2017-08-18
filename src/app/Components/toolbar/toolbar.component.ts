@@ -45,6 +45,6 @@ export class ToolbarComponent implements OnInit {
   }
 
   navigateDashboard(){
-    this.router.navigate(["/user/"+this.id+"/dashboard"])
+    this.router.navigate([`/user/+${this.id}`])
   }
 }

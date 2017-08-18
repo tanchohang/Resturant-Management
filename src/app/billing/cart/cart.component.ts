@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { FirebaseObjectObservable } from 'angularfire2/database';
 import { AuthService } from './../../services/auth/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -11,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-tblNo:number;
+tblNo:number=0;
 showSpinner:boolean=true;
 totalCost:number=0;
 cartItems:Observable<any>;
@@ -19,9 +20,9 @@ cartItems:Observable<any>;
 
   constructor(
     private cartService:CartService,
-    private authService: AuthService
-
-  ) {}
+    private authService: AuthService,
+    private router:Router
+  ) {console.log(this.tblNo)}
 
   ngOnInit() {
     this.authService.authUser.subscribe(res=>{
@@ -48,33 +49,50 @@ cartItems:Observable<any>;
 
 
     order(){
-      this.cartService.getCart().subscribe(res=>{
-        res.map(item=>{
-          console.log(item);
-        this.cartService.setTableOrder(item,7);
-        this.removeFromCart(item);
-        })
+      this.authService.authUser.subscribe(user=>{
+        if(user){
+          console.log(this.authService.authUser)
+            this.cartService.getCart().subscribe(res=>{
+              if(res){
+              res.map(item=>{
+                console.log(item);
+              this.cartService.setTableOrder(item,7);
+              this.router.navigate([`/user/${user.uid}/order`])
+              this.removeFromCart(item);
+              })
+            }
+          })
+        }
+        else{
+        console.error("Login first");
+        this.router.navigate(['/login']);
+        }
       })
-
+     
+     
+  
     }
     delivery(){
-      this.cartService.getCart().subscribe(res=>{
-        res.map(item=>{
-          console.log(item);
-        this.cartService.setDeliveryOrder(item);
-        this.removeFromCart(item);
-        })
+      this.authService.authUser.subscribe(user=>{
+        if(user){
+          this.router.navigate([`/user/${user.uid}/delivery`]);
+        }
       })
 
     }
     takeaway(){
+      this.authService.authUser.subscribe(user=>{
+        if(user){
       this.cartService.getCart().subscribe(res=>{
         res.map(item=>{
           console.log(item);
         this.cartService.setTakeawayOrder(item);
+        this.router.navigate([`/user/${user.uid}/order`])
         this.removeFromCart(item);
         })
       })
+    }
+  })
 
     }
 

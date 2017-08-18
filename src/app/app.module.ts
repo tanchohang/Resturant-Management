@@ -1,3 +1,4 @@
+import { TableService } from './table.service';
 import { BrowserModule} from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -62,7 +63,7 @@ const routes:Routes=[
     
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId:'ng-store'}),
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
@@ -79,6 +80,8 @@ const routes:Routes=[
   providers: [
     AngularFireAuth,
     AuthGuard,
+    TableService,
+    
     
   ],
   bootstrap: [AppComponent],

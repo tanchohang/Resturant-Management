@@ -9,12 +9,16 @@ if (environment.production) {
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule)
-// .then(()=>{
-//   if('serviceWorker' in navigator){
-//       navigator.serviceWorker.register('/worker-basic.min.js')
-//       .then(registration=>console.log('service worker registered'))
-//       .catch((err)=>{
-//         console.error('Service worker registration failed',err);
-//       })
-//     }
-// });
+.then(()=>{
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }).catch(function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  }
+});
+
+

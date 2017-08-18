@@ -43,7 +43,7 @@ export class CartService {
     this.db.object(`orders/${this.uid}/delivery/${item.$key}`).set(item);
   }
   setTableOrder(item,tblNo){
-    this.db.object(`orders/${this.uid}/table/${tblNo}/${item.$key}`).set(item);
+    this.db.object(`orders/${this.uid}/tableOrder/${item.$key}`).set(item);
   }
    setTakeawayOrder(item){
     this.db.object(`orders/${this.uid}/takeaway/${item.$key}`).set(item);
@@ -51,12 +51,22 @@ export class CartService {
 
   getCart():Observable < any > {
 
-    return this.db.list(`cart/${this.uid}`)
+      return this.db.list(`cart/${this.uid}`)
+   
   }
 
   addToCart(uid,item) {
-    this.db.object(`cart/${uid}/${item.$key}`).set(item);    
-    console.log("Added to cart");
+    this.authService.authUser.subscribe(res=>{
+      if(res){
+      this.db.object(`cart/${uid}/${item.$key}`).set(item);    
+      console.log("Added to cart");
+      }
+      else{
+        console.error("not logged in")
+      }
+    })
+    
+   
   }
 
   removeFromCart(item) {
